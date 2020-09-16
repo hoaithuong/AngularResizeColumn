@@ -16,6 +16,11 @@ import {
   franchiseFeesInitialFranchiseFeeIdentifier,
   franchiseFeesIdentifierOngoingRoyalty,
   menuCategoryAttributeDFIdentifier,
+  quarterDateIdentifierQ1,
+  quarterDateIdentifierQ2,
+  monthDateIdentifierJanuary,
+  monthDateIdentifierFeb,
+  monthDateIdentifierApril,
 } from '../../../utils/fixtures.js';
 
 interface PivotTableTotalsBucketProps {
@@ -113,11 +118,75 @@ export class PivotTableTotalsComponent implements OnInit, OnDestroy, OnChanges, 
       attributeIdentifier: "menu",
     },
   ];
+  attributeWidth = width => Model.attributeColumnWidthItem("state", width);
+  allColumn = width =>
+      Model.allMeasureColumnWidthItem(width);
 
   config = {
     menu: {
       aggregations: true,
       aggregationsSubMenu: true,
+    },
+    columnSizing: {
+      defaultWidth: "unset",
+          growToFit: true,
+      columnWidths: [
+        {
+          attributeColumnWidthItem:
+          {
+            width: 10,
+            attributeIdentifier: 'menu'
+          }
+        },
+        {
+          measureColumnWidthItem: {
+            width: 60,
+            locators: [
+              {
+                attributeLocatorItem: {
+                  attributeIdentifier: 'quarterDate',
+                  element: quarterDateIdentifierQ1
+                }
+              },
+              {
+                attributeLocatorItem: {
+                  attributeIdentifier: 'monthDate',
+                  element: monthDateIdentifierJanuary
+                }
+              },
+              {
+                measureLocatorItem: {
+                  measureIdentifier: 'franchiseFeesIdentifier'
+                }
+              }
+            ]
+          }
+        },
+        {
+          measureColumnWidthItem: {
+            width: 10,
+            locators: [
+              {
+                attributeLocatorItem: {
+                  attributeIdentifier: 'quarterDate',
+                  element: quarterDateIdentifierQ1
+                }
+              },
+              {
+                attributeLocatorItem: {
+                  attributeIdentifier: 'monthDate',
+                  element: monthDateIdentifierFeb
+                }
+              },
+              {
+                measureLocatorItem: {
+                  measureIdentifier: 'franchiseFeesAdRoyaltyIdentifier'
+                }
+              }
+            ]
+          }
+        }
+      ]
     }
   }
 
@@ -134,13 +203,29 @@ export class PivotTableTotalsComponent implements OnInit, OnDestroy, OnChanges, 
       projectId: projectId,
       measures: this.measures,
       rows: this.rows,
-      columns: this.columns,
+      // columns: this.columns,
       totals: this.totals,
       sortBy: this.sortBy,
       pageSize: 20,
       groupRows: true,
-      config: this.config
-    };
+      // config: this.config
+      config:{
+        columnSizing: {
+            columnWidths: [
+                this.attributeWidth(0),
+                // this.measureWidth(500),
+                this.allColumn(100),
+            ],
+            defaultWidth: "viewport",
+            growToFit: true
+        },
+        menu: {
+          aggregations: true,
+          aggregationsSubMenu: true,
+        }
+    }
+    
+  }
   }
 
   private isMounted(): boolean {

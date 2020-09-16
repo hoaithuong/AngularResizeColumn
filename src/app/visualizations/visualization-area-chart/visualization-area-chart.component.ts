@@ -4,17 +4,20 @@ import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import { Component, OnInit ,OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 
-import { projectId, areaVisualizationIdentifier } from "../../../utils/fixtures";
+import { projectId, thgiden } from "../../../utils/fixtures";
 import { Visualization } from '@gooddata/react-components';
+import {
+  MAPBOX_TOKEN } from '../../../utils/fixturesGeoChart';
 
 interface VisualizationAreaChartProps {
   projectId: any;
   identifier:any;  
+  config?: any;
 }
 
 @Component({
   selector: 'app-visualization-area-chart',
-  template: '<div class="visualization-area-chart" style="height:300px" [id]="rootDomID"></div>',
+  template: '<div class="visualization-area-chart" style="height:400px" [id]="rootDomID"></div>',
 })
 
 export class VisualizationAreaChartComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
@@ -29,7 +32,12 @@ export class VisualizationAreaChartComponent implements OnInit, OnDestroy, OnCha
   protected getProps(): VisualizationAreaChartProps {
     return {
       projectId:projectId,
-      identifier: areaVisualizationIdentifier,
+      identifier: thgiden,
+      config:{
+        columnSizing: {
+          growToFit: true
+        }
+      }
     };
   }
 

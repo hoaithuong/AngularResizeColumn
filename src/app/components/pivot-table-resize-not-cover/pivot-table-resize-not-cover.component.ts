@@ -30,7 +30,6 @@ interface PivotTableBucketProps {
   columns?: any[];
   sortBy?: any[];
   config: any;
-  filters: any[];
 }
 
 interface PivotTableProps {
@@ -38,73 +37,43 @@ interface PivotTableProps {
 }
 
 @Component({
-  selector: 'app-pivot-table',
+  selector: 'app-pivot-table-resize-not-cover',
   template: '<div class="pivot-table" style="height:500px" [id]="rootDomID"></div>',
 })
+export class PivotTableResizeNotCoverComponent implements OnInit {
 
-export class PivotTableComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
-  
-  // measures = [
-  //   Model.measure(franchiseFeesIdentifier).localIdentifier('franchiseFeesIdentifier'),
-  //   Model.measure(franchiseFeesAdRoyaltyIdentifier).localIdentifier('franchiseFeesAdRoyaltyIdentifier'),
-  //   Model.measure(franchiseFeesInitialFranchiseFeeIdentifier).localIdentifier('franchiseFeesInitialFranchiseFeeIdentifier'),
-  //   Model.measure(franchiseFeesIdentifierOngoingRoyalty).localIdentifier('franchiseFeesIdentifierOngoingRoyalty'),
-  // ]
   measures = [
     Model.measure(franchiseFeesIdentifier).format("#,##0").localIdentifier('franchiseFeesIdentifier').title("Franchised Fees"),
     Model.measure(franchiseFeesAdRoyaltyIdentifier).format("#,##0").localIdentifier('franchiseFeesAdRoyaltyIdentifier').title("Franchise Fees (AdRoyalty)"),
-    Model.measure(franchiseFeesInitialFranchiseFeeIdentifier).format("#,##0").localIdentifier('franchiseFeesInitialFranchiseFeeIdentifier').title("franchiseFees (Initial)"),
-    Model.measure(franchiseFeesIdentifierOngoingRoyalty).format("#,##0").localIdentifier('franchiseFeesIdentifierOngoingRoyalty').title("Franchise Fees (OngoingRoyalty)"),
+    // Model.measure(franchiseFeesInitialFranchiseFeeIdentifier).format("#,##0").localIdentifier('franchiseFeesInitialFranchiseFeeIdentifier').title("franchiseFees (Initial)"),
+    // Model.measure(franchiseFeesIdentifierOngoingRoyalty).format("#,##0").localIdentifier('franchiseFeesIdentifierOngoingRoyalty').title("Franchise Fees (OngoingRoyalty)"),
   ]
   rows = [
     Model.attribute(locationStateDisplayFormIdentifier).localIdentifier("state"),
-    Model.attribute(locationNameDisplayFormIdentifier).localIdentifier("name"),
+    // Model.attribute(locationNameDisplayFormIdentifier).localIdentifier("name"),
     Model.attribute(menuCategoryAttributeDFIdentifier).localIdentifier("category"),
   ]
-  columns = [
-    Model.attribute(quarterDateIdentifier).localIdentifier('quarterDate'), 
-    Model.attribute(monthDateIdentifier).localIdentifier('monthDate')
-  ]
+  // columns = [
+  //   Model.attribute(quarterDateIdentifier).localIdentifier('quarterDate'), 
+  //   Model.attribute(monthDateIdentifier).localIdentifier('monthDate')
+  // ]
 
   sortBy = [Model.attributeSortItem("category", "asc")];
-  filters = [
-    {
-        positiveAttributeFilter: {
-            displayForm: {
-                identifier: quarterDateIdentifier
-            },
-            in: ['Q1'],
-            textFilter: true
-        }
-    },
-    {
-        positiveAttributeFilter: {
-            displayForm: {
-                identifier: monthDateIdentifier
-            },
-            in: ['Jan'],
-            textFilter: true
-        }
-    }
-  ]
 
   attributeWidth = width => Model.attributeColumnWidthItem("state", width);
-  
+  allColumn = width => Model.allMeasureColumnWidthItem(width);
   measureWidth = width =>
-    Model.measureColumnWidthItem("franchiseFeesIdentifier", width)
-    .attributeLocators(
-        {
-            attributeIdentifier: "quarterDate",
-            element: quarterDateIdentifierQ1 
-        },
-        {
-            attributeIdentifier: "monthDate",
-            element: monthDateIdentifierJanuary 
-        }
-    )
-
-    allColumn = width =>
-      Model.allMeasureColumnWidthItem(width);
+    Model.measureColumnWidthItem("franchiseFeesIdentifier", width);
+    // .attributeLocators(
+    //     {
+    //         attributeIdentifier: "quarterDate",
+    //         element: quarterDateIdentifierQ1 
+    //     },
+    //     {
+    //         attributeIdentifier: "monthDate",
+    //         element: monthDateIdentifierJanuary 
+    //     }
+    // );
 
   state = {
     columnWidths: [this.attributeWidth(200), this.measureWidth(200)],
@@ -123,23 +92,19 @@ export class PivotTableComponent implements OnInit, OnDestroy, OnChanges, AfterV
       projectId: projectId,
       measures: this.measures,
       rows: this.rows,
-      columns: this.columns,
-      // sortBy: this.sortBy,
-      // filters: this.filters,
+      // columns: this.columns,
+      sortBy: this.sortBy,
       config:{
           columnSizing: {
-              columnWidths: [
-                  this.attributeWidth(100),
-                  this.measureWidth(-400),
-                  this.allColumn(900),
-              ],
-              defaultWidth: "viewport",
-              growToFit: false
-          },
-          menu: {
-            aggregations: true,
-            aggregationsSubMenu: true,
-          },
+            columnWidths: [
+              this.attributeWidth(400),
+              this.measureWidth(100),
+              this.allColumn(-50000000000)
+            ],
+            defaultWidth: "viewport",
+            growToFit: true
+          }
+
       }
     };
   }
@@ -172,3 +137,4 @@ export class PivotTableComponent implements OnInit, OnDestroy, OnChanges, AfterV
   }
 
 }
+

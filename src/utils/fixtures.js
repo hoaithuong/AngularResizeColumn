@@ -2,13 +2,13 @@
 
 const demoProject = {
     "https://secure.gooddata.com": "k26dtejorcqlqf11crn6imbeevp2q4kg",
-    "https://staging3.intgdc.com": "ht3owbpk6h0yfjtkcsgva3osu3z7paol",
+    "https://staging3.intgdc.com": "xp9yfghe4na21w27cyrnyrwx5si2vk6e",
     "https://staging2.intgdc.com": "exveshu0intwbr4nk6ao8ft6vesjiqus",
     "https://staging.intgdc.com": "xskxypodp5s4p2t6x99b2szivf8qi3st",
     "https://developer.na.gooddata.com": "xms7ga4tf3g3nzucd8380o2bev8oeknp",
 };
 
-const backendUrl = "https://developer.na.gooddata.com"; // eslint-disable-line no-undef
+const backendUrl = "https://staging3.intgdc.com"; // eslint-disable-line no-undef
 const demoProjectId = demoProject[backendUrl];
 if (!demoProjectId) {
     console.error(`[fixtures.js] ProjectId for backend "${backendUrl}" is not in `, demoProject); // eslint-disable-line no-console
@@ -21,7 +21,16 @@ console.log("The /gdc proxy is connected to: ", backendUrl, " with projectId: ",
 export const backendUrlForInfo = backendUrl;
  //export const projectId = 'ht3owbpk6h0yfjtkcsgva3osu3z7paol';
 export const projectId=demoProjectId;
+export const quarterDateIdentifierQ1 = `/gdc/md/${projectId}/obj/2009/elements?id=1`;
+export const quarterDateIdentifierQ2 = `/gdc/md/${projectId}/obj/2009/elements?id=2`;
+// export const monthDateIdentifierJanuary = `/gdc/md/${projectId}/obj/2071/elements?id=1`;
+export const monthDateIdentifierFeb = `/gdc/md/${projectId}/obj/2071/elements?id=2`;
+export const monthDateIdentifierApril = `/gdc/md/${projectId}/obj/2071/elements?id=4`;
  
+export const thguri = `/gdc/md/${projectId}/obj/11217`;
+export const thgiden = "aadJjCWDbX5P";
+
+
 export const averageCheckSizeByServer = "afewRzGAersh";
 export const averageDailyTotalSales = "aagJGHg1bxap";
 export const barVisualizationIdentifier = "aaKaMZUJeyGo";
@@ -45,7 +54,7 @@ export const treemapVisualizationUri = `/gdc/md/${projectId}/obj/9151`;
 export const heatmapVisualizationIdentifier = "abkaJfMYiiCU";
 export const heatmapVisualizationUri = `/gdc/md/${projectId}/obj/9182`;
 export const columnVisualizationIdentifier = "acFJltTsifSQ";
-export const columnVisualizationIdentifierExport = "acFJltTsifSQ";
+export const columnVisualizationIdentifierExport = "aacbEeExdxr1";
 export const columnVisualizationUri = `/gdc/md/${projectId}/obj/6862`;
 export const dateDatasetIdentifier = "date.dataset.dt";
 export const dateDataSetUri = `/gdc/md/${projectId}/obj/2180`;
@@ -79,6 +88,7 @@ export const monthDateIdentifier = "date.abm81lMifn6q";
 export const monthDateIdentifierJanuary = `/gdc/md/${projectId}/obj/2071/elements?id=1`;
 export const numberOfChecksIdentifier = "aeOt50ngicOD";
 export const tableVisualizationIdentifier = "aatFRvXBdilm";
+export const tableVisualizationIdentifierthg = "aadb2gKGioFY";
 export const tableVisualizationUri = `/gdc/md/${projectId}/obj/8702`;
 export const totalSalesIdentifier = "aa7ulGyKhIE5";
 export const numberOfRestaurantsIdentifier = "aawAq8YqhM3o";

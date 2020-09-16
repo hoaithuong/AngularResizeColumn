@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as uuid from 'uuid';
 import * as invariant from 'invariant';
-import { Component, Input, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
 import '@gooddata/react-components/styles/css/main.css';
-import { PivotTable, HeaderPredicateFactory, Model } from '@gooddata/react-components';
+import { PivotTable, Model } from '@gooddata/react-components';
 import {
   projectId,
   quarterDateIdentifier,
@@ -23,48 +23,26 @@ import {
   monthDateIdentifierApril,
 } from '../../../utils/fixtures.js';
 
-interface PivotTableDrillExampleBucketProps {
+interface PivotTableBucketProps {
   projectId: any;
   measures?: any[];
   rows?: any[];
   columns?: any[];
-  totals?: any[];
-  filters?: any[];
   sortBy?: any[];
-  drillableItems?: any[];
-  onFiredDrillEvent?: any;
   config: any;
+  filters?: any[];
 }
 
-interface PivotTableDrillExampleProps {
+interface PivotTableProps {
   projectId: any;
 }
 
 @Component({
-  selector: 'app-pivot-table-drill-example',
-  template: '<div class="pivot-table-drill-example" style="height:500px" [id]="rootDomID"></div>',
+  selector: 'app-pivot-table-resize-weak-measure',
+  templateUrl: './pivot-table-resize-weak-measure.component.html',
+  styleUrls: ['./pivot-table-resize-weak-measure.component.css']
 })
-export class PivotTableDrillExampleComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
-  onDrill = drillEvent => {
-    console.log(
-      "onFiredDrillEvent",
-      drillEvent,
-      JSON.stringify(drillEvent.drillContext.intersection, null, 2),
-    );
-    return true;
-  };
-
-  renderDrillValue() {
-    let drillEvent;
-    if (!drillEvent) {
-      return null;
-    }
-  };
-
-  drillableItems = [
-    HeaderPredicateFactory.identifierMatch(menuCategoryAttributeDFIdentifier),
-    HeaderPredicateFactory.identifierMatch(franchiseFeesIdentifier),
-  ];
+export class PivotTableResizeWeakMeasureComponent implements OnInit {
 
   measures = [
     Model.measure(franchiseFeesIdentifier).format("#,##0").localIdentifier('franchiseFeesIdentifier').title("Franchised Fees"),
@@ -72,20 +50,41 @@ export class PivotTableDrillExampleComponent implements OnInit, OnDestroy, OnCha
     Model.measure(franchiseFeesInitialFranchiseFeeIdentifier).format("#,##0").localIdentifier('franchiseFeesInitialFranchiseFeeIdentifier').title("franchiseFees (Initial)"),
     Model.measure(franchiseFeesIdentifierOngoingRoyalty).format("#,##0").localIdentifier('franchiseFeesIdentifierOngoingRoyalty').title("Franchise Fees (OngoingRoyalty)"),
   ]
-
   rows = [
     Model.attribute(locationStateDisplayFormIdentifier).localIdentifier("state"),
     Model.attribute(locationNameDisplayFormIdentifier).localIdentifier("name"),
-    Model.attribute(menuCategoryAttributeDFIdentifier).localIdentifier("menu"),
+    Model.attribute(menuCategoryAttributeDFIdentifier).localIdentifier("category"),
   ]
-
   columns = [
     Model.attribute(quarterDateIdentifier).localIdentifier('quarterDate'), 
     Model.attribute(monthDateIdentifier).localIdentifier('monthDate')
   ]
 
-  attributeWidth = width => Model.attributeColumnWidthItem("menu", width);
+  filters = [
+    {
+        positiveAttributeFilter: {
+            displayForm: {
+                identifier: quarterDateIdentifier
+            },
+            in: ['Q1'],
+            textFilter: true
+        }
+    },
+    {
+        positiveAttributeFilter: {
+            displayForm: {
+                identifier: monthDateIdentifier
+            },
+            in: ['Jan'],
+            textFilter: true
+        }
+    }
+  ]
 
+  sortBy = [Model.attributeSortItem("category", "asc")];
+
+  attributeWidth = width => Model.attributeColumnWidthItem("state", width);
+  
   measureWidth = width =>
     Model.measureColumnWidthItem("franchiseFeesIdentifier", width)
     .attributeLocators(
@@ -102,7 +101,7 @@ export class PivotTableDrillExampleComponent implements OnInit, OnDestroy, OnCha
   state = {
     columnWidths: [this.attributeWidth(200), this.measureWidth(200)],
   };
-
+  
   public rootDomID: string;
 
   protected getRootDomNode() {
@@ -111,25 +110,43 @@ export class PivotTableDrillExampleComponent implements OnInit, OnDestroy, OnCha
     return node;
   }
 
-  protected getProps(): PivotTableDrillExampleProps | PivotTableDrillExampleBucketProps {
-    { this.renderDrillValue() }
+  protected getProps(): PivotTableProps | PivotTableBucketProps {
     return {
       projectId: projectId,
       measures: this.measures,
       rows: this.rows,
       columns: this.columns,
-      drillableItems: this.drillableItems,
-      onFiredDrillEvent: this.onDrill,
+      sortBy: this.sortBy,
+      // filters: this.filters,
       config:{
         columnSizing: {
-          defaultWidth: "viewport",
-          growToFit: true,
-            columnWidths: [
-                this.attributeWidth(400),
-                this.measureWidth(60)
-            ],
-        },
-    }
+          columnWidths: [
+            {
+              measureColumnWidthItem: {
+                width: { value: 6 },
+                locator: {
+                  measureLocatorItem: {
+                    measureIdentifier: 'franchiseFeesIdentifier',
+                  },
+                }
+              }
+            },
+            {
+              measureColumnWidthItem: {
+                width: { value: 100 },
+                locator: {
+                  measureLocatorItem: {
+                    measureIdentifier: 'franchiseFeesAdRoyaltyIdentifier',
+                  },
+                }
+              }
+            }
+          ],
+          defaultWidth: "unset",
+          growToFit: false
+        }
+
+      }
     };
   }
 
@@ -161,3 +178,4 @@ export class PivotTableDrillExampleComponent implements OnInit, OnDestroy, OnCha
   }
 
 }
+

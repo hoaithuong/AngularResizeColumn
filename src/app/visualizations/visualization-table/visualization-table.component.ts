@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
-import { projectId, tableVisualizationIdentifier } from "../../../utils/fixtures";
+import { projectId, tableVisualizationIdentifierthg } from "../../../utils/fixtures";
 import { Visualization } from '@gooddata/react-components';
 
 interface VisualizationAreaChartProps {
@@ -28,7 +28,7 @@ export class VisualizationTableComponent implements OnInit, OnDestroy, OnChanges
   protected getProps(): VisualizationAreaChartProps {
     return {
       projectId: projectId,
-      identifier: tableVisualizationIdentifier,
+      identifier: tableVisualizationIdentifierthg,
     };
   }
 

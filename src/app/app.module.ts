@@ -148,7 +148,14 @@ import { AttributeElementComponent } from './components/attribute-element/attrib
 import { MeasureValueFilterComponentExampleComponent } from './components/measure-value-filter-component-example/measure-value-filter-component-example.component';
 import { MeasureValueFilterComponentPercentageExampleComponent } from './components/measure-value-filter-component-percentage-example/measure-value-filter-component-percentage-example.component';
 import { MeasureValueFilterComponentShowInPercentComponent } from './components/measure-value-filter-component-show-in-percent/measure-value-filter-component-show-in-percent.component';
-import { VisualizationHasMvfComponent } from './visualizations/visualization-has-mvf/visualization-has-mvf.component'
+import { VisualizationHasMvfComponent } from './visualizations/visualization-has-mvf/visualization-has-mvf.component';
+import { PivotTableResizeButtonComponent } from './components/pivot-table-resize-button/pivot-table-resize-button.component';
+import { PivotTableResizeNotCoverComponent } from './components/pivot-table-resize-not-cover/pivot-table-resize-not-cover.component';
+import { PivotTableResizeButtonIndependenceComponent } from './components/pivot-table-resize-button-independence/pivot-table-resize-button-independence.component';
+import { PivotTableSizingComplexExampleComponent } from './components/pivot-table-sizing-complex-example/pivot-table-sizing-complex-example.component';
+import { PivotTableResizeWeakMeasureComponent } from './components/pivot-table-resize-weak-measure/pivot-table-resize-weak-measure.component';
+import { PivotTableResizeWeakMeasureButtonComponent } from './components/pivot-table-resize-weak-measure-button/pivot-table-resize-weak-measure-button.component'
+
 
 @NgModule({
     imports: [
@@ -299,8 +306,13 @@ import { VisualizationHasMvfComponent } from './visualizations/visualization-has
         MeasureValueFilterComponentExampleComponent,
         MeasureValueFilterComponentPercentageExampleComponent,
         MeasureValueFilterComponentShowInPercentComponent,
-        VisualizationHasMvfComponent
-
+        VisualizationHasMvfComponent,
+        PivotTableResizeButtonComponent,
+        PivotTableResizeNotCoverComponent,
+        PivotTableResizeButtonIndependenceComponent,
+        PivotTableSizingComplexExampleComponent,
+        PivotTableResizeWeakMeasureComponent,
+        PivotTableResizeWeakMeasureButtonComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -404,7 +416,13 @@ import { VisualizationHasMvfComponent } from './visualizations/visualization-has
         MeasureValueFilterComponentExampleComponent,
         MeasureValueFilterComponentPercentageExampleComponent,
         MeasureValueFilterComponentShowInPercentComponent,
-        VisualizationHasMvfComponent
+        VisualizationHasMvfComponent,
+        PivotTableResizeButtonComponent,
+        PivotTableResizeNotCoverComponent,
+        PivotTableResizeButtonIndependenceComponent,
+        PivotTableSizingComplexExampleComponent,
+        PivotTableResizeWeakMeasureComponent,
+        PivotTableResizeWeakMeasureButtonComponent
     ]
 })
 

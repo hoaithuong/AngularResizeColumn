@@ -3,12 +3,13 @@ import * as ReactDOM from 'react-dom';
 import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import { Component, OnInit ,OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
-import { projectId, areaVisualizationUri} from "../../../utils/fixtures";
+import { projectId, thguri} from "../../../utils/fixtures";
 import { Visualization } from '@gooddata/react-components';
 
 interface VisualizationAreaChartByUriProps {
   projectId: any;
   uri:any;  
+  config: any;
 }
 
 @Component({
@@ -28,7 +29,12 @@ export class VisualizationAreaChartByUriComponent implements OnInit, OnDestroy, 
   protected getProps(): VisualizationAreaChartByUriProps {
     return {
       projectId:projectId,
-      uri: areaVisualizationUri,
+      uri: thguri,
+      config:{
+        columnSizing: {
+          growToFit: false
+        }
+      }
     };
   }
 

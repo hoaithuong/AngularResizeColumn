@@ -1,27 +1,35 @@
 import * as React from 'react';
-import * as uuid from 'uuid';
 import * as ReactDOM from 'react-dom';
+import * as uuid from 'uuid';
 import * as invariant from 'invariant';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
+import '@gooddata/react-components/styles/css/main.css';
 import { PivotTable, Model } from '@gooddata/react-components';
-import { ExampleWithExportComponent } from '../utils/example-with-export/example-with-export.component';
-import {  
-  projectId, 
-  franchiseFeesIdentifier, 
-  franchiseFeesAdRoyaltyIdentifier,
-  franchiseFeesInitialFranchiseFeeIdentifier,
-  franchiseFeesIdentifierOngoingRoyalty,
+import {
+  projectId,
+  quarterDateIdentifier,
+  monthDateIdentifier,
   locationStateDisplayFormIdentifier,
   locationNameDisplayFormIdentifier,
+  franchiseFeesIdentifier,
+  franchiseFeesAdRoyaltyIdentifier,
+  franchiseFeesInitialFranchiseFeeIdentifier,
+  franchisedSalesIdentifier,
+  franchiseFeesIdentifierOngoingRoyalty,
   menuCategoryAttributeDFIdentifier,
-  quarterDateIdentifier,
+  quarterDateIdentifierQ1,
+  quarterDateIdentifierQ2,
+  monthDateIdentifierJanuary,
+  monthDateIdentifierFeb,
+  monthDateIdentifierApril,
   numberOfRestaurantsIdentifier,
-  monthDateIdentifier,
-  dateDataSetUri } from '../../../utils/fixtures';
+  totalSalesIdentifier,
+  franchiseFeesTag
+} from '../../../utils/fixtures.js';
 
-  let self: any;
+let self: any;
 
-interface ChartProps {
+interface PivotTableBucketProps {
   key: any;
   projectId: any;
   measures?: any[];
@@ -30,39 +38,20 @@ interface ChartProps {
   sortBy?: any[];
   config: any;
   onColumnResized: any;
-  onExportReady?: any;
-  totals?: any[];
-  pageSize?: number
+  totals: any[];
+  pageSize: number
+}
+
+interface PivotTableProps {
+  projectId: any;
 }
 
 @Component({
-  selector: 'app-pivot-table-export-example',
-  template: `
-
-<div style="min-height: 400px;" class='example-with-source'>
-<div class='example'>
-  <div>
-    <div>
-      <span style="padding-right: 10px;" [id]="rootDomAttributeID"></span>
-      <span style="padding-right: 10px;" [id]="rootDomMeasureID"></span>
-      <!-- <span style="padding-right: 10px;" [id]="rootDomStateID"></span> -->
-      <span [id]="rootDomResetID"></span>
-    </div>
-    <hr class="separator"/>
-    <div><div style ="height: 400px"><div style ="height: 330px" [id]="rootDomID"></div><app-example-with-export></app-example-with-export></div>
-    
-  </div>
-  <p>columns state: </p>
-  <span style="padding-top: 10px;" [id]="rootDomStateID"></span>
-</div>
-</div>
-
-`
+  selector: 'app-pivot-table-sizing-complex-example',
+  templateUrl: './pivot-table-sizing-complex-example.component.html',
+  styleUrls: ['./pivot-table-sizing-complex-example.component.css']
 })
-
-export class PivotTableExportExampleComponent implements OnInit {
-  constructor(private ExportComponent: ExampleWithExportComponent) { }
-
+export class PivotTableSizingComplexExampleComponent implements OnInit {
   measures = [
     Model.measure(numberOfRestaurantsIdentifier)
         .format("#,##0")
@@ -188,15 +177,16 @@ export class PivotTableExportExampleComponent implements OnInit {
     return node;
   }
 
-  protected getProps(): ChartProps {
+  protected getProps(): PivotTableProps | PivotTableBucketProps {
     return {
       key:`PivotTableKey-${this.state.gridTableCount}`,
       projectId: projectId,
       measures: this.measures,
       rows: this.attributes,
       columns: this.columns,
+      // sortBy: this.sortBy,
+      // totals: this.totals,
       onColumnResized: this.onColumnResized,
-      onExportReady: this.ExportComponent.onExportReady,
       config: {
         columnSizing: {
             columnWidths: [...this.state.columnWidths],
@@ -207,7 +197,7 @@ export class PivotTableExportExampleComponent implements OnInit {
         menu: {
           aggregations: true,
           aggregationsSubMenu: true,
-        },
+        }
       },
       pageSize: 20
     };

@@ -54,68 +54,68 @@ export class VisualizationByUriComponent implements OnInit {
 
   visualizationByUriComponentArray = [
     {
-      title: 'Area Chart',
+      title: 'Pivot Table',
       for: VisualizationAreaChartByUriComponent,
       ts: VisualizationAreaChartByUriComponentSRC,
       html: VisualizationAreaChartByUriComponentHTML,
       css: VisualizationAreaChartByUriComponentCSS
     },
-    {
-      title: 'Column Chart',
-      for: VisualizationColumnChartByUriComponent,
-      ts: VisualizationColumnChartByUriComponentSRC,
-      html: VisualizationColumnChartByUriComponentHTML,
-      css: VisualizationColumnChartByUriComponentCSS
-    },
-    {
-      title: 'Line Chart',
-      for: VisualizationLineChartByUriComponent,
-      ts: VisualizationLineChartByUriComponentSRC,
-      html: VisualizationLineChartByUriComponentHTML,
-      css: VisualizationLineChartByUriComponentCSS
-    },
-    {
-      title: 'Headline',
-      for: VisualizationHeadlineByUriComponent,
-      ts: VisualizationHeadlineByUriComponentSRC,
-      html: VisualizationHeadlineByUriComponentHTML,
-      css: VisualizationHeadlineByUriComponentCSS
-    },
-    {
-      title: 'Bubble Chart',
-      for: VisualizationBubbleChartByUriComponent,
-      ts: VisualizationBubbleChartByUriComponentSRC,
-      html: VisualizationBubbleChartByUriComponentHTML,
-      css: VisualizationBubbleChartByUriComponentCSS
-    },
-    {
-      title: 'Scatter Chart',
-      for: VisualizationScatterPlotByUriComponent,
-      ts: VisualizationScatterPlotByUriComponentSRC,
-      html: VisualizationScatterPlotByUriComponentHTML,
-      css: VisualizationScatterPlotByUriComponentCSS
-    },
-    {
-      title: 'Pie Chart',
-      for: VisualizationPieChartByUriComponent,
-      ts: VisualizationPieChartByUriComponentSRC,
-      html: VisualizationPieChartByUriComponentHTML,
-      css: VisualizationPieChartByUriComponentCSS
-    },
-    {
-      title: 'Donut Chart',
-      for: VisualizationDonutChartByUriComponent,
-      ts: VisualizationDonutChartByUriComponentSRC,
-      html: VisualizationDonutChartByUriComponentHTML,
-      css: VisualizationDonutChartByUriComponentCSS
-    },
-    {
-      title: 'Bullet Chart',
-      for: VisualizationBulletChartByUriComponent,
-      ts: VisualizationBulletChartByUriComponentSRC,
-      html: VisualizationBulletChartByUriComponentHTML,
-      css: VisualizationBulletChartByUriComponentCSS
-    }
+    // {
+    //   title: 'Column Chart',
+    //   for: VisualizationColumnChartByUriComponent,
+    //   ts: VisualizationColumnChartByUriComponentSRC,
+    //   html: VisualizationColumnChartByUriComponentHTML,
+    //   css: VisualizationColumnChartByUriComponentCSS
+    // },
+    // {
+    //   title: 'Line Chart',
+    //   for: VisualizationLineChartByUriComponent,
+    //   ts: VisualizationLineChartByUriComponentSRC,
+    //   html: VisualizationLineChartByUriComponentHTML,
+    //   css: VisualizationLineChartByUriComponentCSS
+    // },
+    // {
+    //   title: 'Headline',
+    //   for: VisualizationHeadlineByUriComponent,
+    //   ts: VisualizationHeadlineByUriComponentSRC,
+    //   html: VisualizationHeadlineByUriComponentHTML,
+    //   css: VisualizationHeadlineByUriComponentCSS
+    // },
+    // {
+    //   title: 'Bubble Chart',
+    //   for: VisualizationBubbleChartByUriComponent,
+    //   ts: VisualizationBubbleChartByUriComponentSRC,
+    //   html: VisualizationBubbleChartByUriComponentHTML,
+    //   css: VisualizationBubbleChartByUriComponentCSS
+    // },
+    // {
+    //   title: 'Scatter Chart',
+    //   for: VisualizationScatterPlotByUriComponent,
+    //   ts: VisualizationScatterPlotByUriComponentSRC,
+    //   html: VisualizationScatterPlotByUriComponentHTML,
+    //   css: VisualizationScatterPlotByUriComponentCSS
+    // },
+    // {
+    //   title: 'Pie Chart',
+    //   for: VisualizationPieChartByUriComponent,
+    //   ts: VisualizationPieChartByUriComponentSRC,
+    //   html: VisualizationPieChartByUriComponentHTML,
+    //   css: VisualizationPieChartByUriComponentCSS
+    // },
+    // {
+    //   title: 'Donut Chart',
+    //   for: VisualizationDonutChartByUriComponent,
+    //   ts: VisualizationDonutChartByUriComponentSRC,
+    //   html: VisualizationDonutChartByUriComponentHTML,
+    //   css: VisualizationDonutChartByUriComponentCSS
+    // },
+    // {
+    //   title: 'Bullet Chart',
+    //   for: VisualizationBulletChartByUriComponent,
+    //   ts: VisualizationBulletChartByUriComponentSRC,
+    //   html: VisualizationBulletChartByUriComponentHTML,
+    //   css: VisualizationBulletChartByUriComponentCSS
+    // }
   ]
 
   ngOnInit() {

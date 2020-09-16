@@ -59,75 +59,75 @@ export class VisualizationByIdentifierComponent implements OnInit {
 
   visualizationByIdentifierComponentArray = [
     {
-      title: 'Area Chart',
+      title: 'Pivot Table',
       for: VisualizationAreaChartComponent,
       ts: VisualizationAreaChartComponentSRC,
       html: VisualizationAreaChartComponentHTML,
       css: VisualizationAreaChartComponentCSS
     },
-    {
-      title: 'Pivot Table',
-      for: VisualizationTableComponent,
-      ts: VisualizationTableComponentSRC,
-      html: VisualizationTableComponentHTML,
-      css: VisualizationTableComponentCSS
-    },
-    {
-      title: 'Bar Chart',
-      for: VisualizationBarChartComponent,
-      ts: VisualizationBarChartComponentSRC,
-      html: VisualizationBarChartComponentHTML,
-      css: VisualizationBarChartComponentCSS
-    },
-    {
-      title: 'Column Chart',
-      for: VisualizationColumnChartComponent,
-      ts: VisualizationColumnChartComponentSRC,
-      html: VisualizationColumnChartComponentHTML,
-      css: VisualizationColumnChartComponentCSS
-    },
-    {
-      title: 'Line Chart',
-      for: VisualizationLineChartComponent,
-      ts: VisualizationLineChartComponentSRC,
-      html: VisualizationLineChartComponentHTML,
-      css: VisualizationLineChartComponentCSS
-    },
-    {
-      title: 'Treemap',
-      for: VisualizationTreemapByIdentifierComponent,
-      ts: VisualizationTreemapByIdentifierComponentSRC,
-      html: VisualizationTreemapByIdentifierComponentHTML,
-      css: VisualizationTreemapByIdentifierComponentCSS
-    },
-    {
-      title: 'Heatmap',
-      for: VisualizationHeatmapByIdentifierComponent,
-      ts: VisualizationHeatmapByIdentifierComponentSRC,
-      html: VisualizationHeatmapByIdentifierComponentHTML,
-      css: VisualizationHeatmapByIdentifierComponentCSS
-    },
-    {
-      title: 'Pie Chart',
-      for: VisualizationPieChartByIdentifierComponent,
-      ts: VisualizationPieChartByIdentifierComponentSRC,
-      html: VisualizationPieChartByIdentifierComponentHTML,
-      css: VisualizationPieChartByIdentifierComponentCSS
-    },
-    {
-      title: 'Donut Chart',
-      for: VisualizationDonutChartByIdentifierComponent,
-      ts: VisualizationDonutChartByIdentifierComponentSRC,
-      html: VisualizationDonutChartByIdentifierComponentHTML,
-      css: VisualizationDonutChartByIdentifierComponentCSS
-    },
-    {
-      title: 'Bullet Chart',
-      for: VisualizationBulletChartByIdentifierComponent,
-      ts: VisualizationBulletChartByIdentifierComponentSRC,
-      html: VisualizationBulletChartByIdentifierComponentHTML,
-      css: VisualizationBulletChartByIdentifierComponentCSS
-    }
+    // {
+    //   title: 'Pivot Table',
+    //   for: VisualizationTableComponent,
+    //   ts: VisualizationTableComponentSRC,
+    //   html: VisualizationTableComponentHTML,
+    //   css: VisualizationTableComponentCSS
+    // },
+    // {
+    //   title: 'Bar Chart',
+    //   for: VisualizationBarChartComponent,
+    //   ts: VisualizationBarChartComponentSRC,
+    //   html: VisualizationBarChartComponentHTML,
+    //   css: VisualizationBarChartComponentCSS
+    // },
+    // {
+    //   title: 'Column Chart',
+    //   for: VisualizationColumnChartComponent,
+    //   ts: VisualizationColumnChartComponentSRC,
+    //   html: VisualizationColumnChartComponentHTML,
+    //   css: VisualizationColumnChartComponentCSS
+    // },
+    // {
+    //   title: 'Line Chart',
+    //   for: VisualizationLineChartComponent,
+    //   ts: VisualizationLineChartComponentSRC,
+    //   html: VisualizationLineChartComponentHTML,
+    //   css: VisualizationLineChartComponentCSS
+    // },
+    // {
+    //   title: 'Treemap',
+    //   for: VisualizationTreemapByIdentifierComponent,
+    //   ts: VisualizationTreemapByIdentifierComponentSRC,
+    //   html: VisualizationTreemapByIdentifierComponentHTML,
+    //   css: VisualizationTreemapByIdentifierComponentCSS
+    // },
+    // {
+    //   title: 'Heatmap',
+    //   for: VisualizationHeatmapByIdentifierComponent,
+    //   ts: VisualizationHeatmapByIdentifierComponentSRC,
+    //   html: VisualizationHeatmapByIdentifierComponentHTML,
+    //   css: VisualizationHeatmapByIdentifierComponentCSS
+    // },
+    // {
+    //   title: 'Pie Chart',
+    //   for: VisualizationPieChartByIdentifierComponent,
+    //   ts: VisualizationPieChartByIdentifierComponentSRC,
+    //   html: VisualizationPieChartByIdentifierComponentHTML,
+    //   css: VisualizationPieChartByIdentifierComponentCSS
+    // },
+    // {
+    //   title: 'Donut Chart',
+    //   for: VisualizationDonutChartByIdentifierComponent,
+    //   ts: VisualizationDonutChartByIdentifierComponentSRC,
+    //   html: VisualizationDonutChartByIdentifierComponentHTML,
+    //   css: VisualizationDonutChartByIdentifierComponentCSS
+    // },
+    // {
+    //   title: 'Bullet Chart',
+    //   for: VisualizationBulletChartByIdentifierComponent,
+    //   ts: VisualizationBulletChartByIdentifierComponentSRC,
+    //   html: VisualizationBulletChartByIdentifierComponentHTML,
+    //   css: VisualizationBulletChartByIdentifierComponentCSS
+    // }
   ]
 
   ngOnInit() {

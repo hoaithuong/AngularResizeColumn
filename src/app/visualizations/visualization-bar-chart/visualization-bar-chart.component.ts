@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as uuid from 'uuid';
 import * as invariant from 'invariant';
 import { Component, OnInit ,OnDestroy, OnChanges, AfterViewInit } from '@angular/core';
-import { projectId, barVisualizationIdentifier } from "../../../utils/fixtures";
+import { projectId, tableVisualizationIdentifierthg } from "../../../utils/fixtures";
 import { Visualization } from '@gooddata/react-components';
 
 interface VisualizationBarChartProps {
@@ -28,7 +28,7 @@ export class VisualizationBarChartComponent implements OnInit, OnDestroy, OnChan
   protected getProps(): VisualizationBarChartProps {
     return {
       projectId:projectId,
-      identifier: barVisualizationIdentifier,
+      identifier: tableVisualizationIdentifierthg,
     };
   }
 
